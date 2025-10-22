@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Makanan & Minuman Aksara Kopi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f9f9f9, #e6f0ff);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .menu-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 400px;
+      background-color: #f0f8ff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+      color: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .form {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    @media (max-width: 600px) {
+      .form {
+        flex-direction: column;
+      }
+
+      input[type="text"], button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍽️ Menu Makanan & Minuman Aksara Kopi 🥤</h1>
+
+    <div class="menu-section">
+      <!-- Makanan -->
+      <div class="card">
+        <h2>🍜 Makanan</h2>
+        <ul id="listMakanan">
+          <li>Nasi Goreng</li>
+          <li>Mie Ayam</li>
+          <li>Sate Ayam</li>
+        </ul>
+        <div class="form">
+          <input type="text" id="inputMakanan" placeholder="Tambah makanan...">
+          <button onclick="tambahItem('makanan')">Tambah</button>
+        </div>
+      </div>
+
+      <!-- Minuman -->
+      <div class="card">
+        <h2>🥤 Minuman</h2>
+        <ul id="listMinuman">
+          <li>Es Teh Manis</li>
+          <li>Jus Alpukat</li>
+          <li>Kopi Hitam</li>
+        </ul>
+        <div class="form">
+          <input type="text" id="inputMinuman" placeholder="Tambah minuman...">
+          <button onclick="tambahItem('minuman')">Tambah</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function tambahItem(kategori) {
+      let input, list;
+      if (kategori === 'makanan') {
+        input = document.getElementById('inputMakanan');
+        list = document.getElementById('listMakanan');
+      } else if (kategori === 'minuman') {
+        input = document.getElementById('inputMinuman');
+        list = document.getElementById('listMinuman');
+      }
+
+      const nilai = input.value.trim();
+      if (nilai === "") {
+        alert("Silakan masukkan nama item.");
+        return;
+      }
+
+      const itemBaru = document.createElement('li');
+      itemBaru.textContent = nilai;
+      list.appendChild(itemBaru);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
